@@ -5,6 +5,7 @@ import { brandPrinciples, contactInfo, servicePillars } from "./site-data";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activePillar, setActivePillar] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 48);
@@ -13,6 +14,30 @@ export default function Home() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    const capabilityItems = document.querySelectorAll<HTMLElement>(".capability");
+
+    if (!capabilityItems.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleItem = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((first, second) => second.intersectionRatio - first.intersectionRatio)[0];
+
+        if (visibleItem) {
+          setActivePillar(Number((visibleItem.target as HTMLElement).dataset.index));
+        }
+      },
+      { rootMargin: "-22% 0px -48% 0px", threshold: [0.25, 0.55, 0.8] },
+    );
+
+    capabilityItems.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, [activePillar]);
+
+  const selectedPillar = servicePillars[activePillar];
 
   return (
     <main>
@@ -47,24 +72,20 @@ export default function Home() {
             <a className="text-link" href="#atuacao">Ver áreas de atuação <span>↓</span></a>
           </div>
         </div>
-        <div className="hero-aside">
-          <div className="aside-rule" />
-          <p>Excelência técnica<br /><strong>com impacto social.</strong></p>
-          <span className="aside-index">01 — 03</span>
-        </div>
-        <div className="hero-stamp" aria-hidden="true">INOVA<br /><span>2026</span></div>
+       
+        
       </section>
 
       <section className="institutional-section" aria-label="Sobre a Inova">
         <div className="institutional-visual">
           <div className="institutional-visual-caption">
-            <span>INOVA</span>
+            <span className="visual-brand">INOVA <small>Inteligência em Gestão Pública</small></span>
             <span>gestão que transforma</span>
           </div>
         </div>
         <div className="institutional-copy">
           <p className="section-label">/ 00 — A Inova</p>
-          <div className="institutional-title">INOVA</div>
+          <div className="institutional-title">INOVA <small>Inteligência em Gestão Pública</small></div>
           <p>
             Inteligência aplicada para fazer a gestão pública avançar com
             clareza, responsabilidade e impacto real.
@@ -81,19 +102,22 @@ export default function Home() {
       </section>
 
       <section className="intro-section" id="sobre">
-        <div className="section-label">/ 01 — O nosso olhar</div>
         <div className="intro-content">
-          <h2>Atuação ética que une <span>propósito e eficiência.</span></h2>
-          <p>
-            A Inova apoia órgãos e gestores públicos no aperfeiçoamento da
-            governança, transformando desafios burocráticos em entregas
-            concretas para a população.
-          </p>
+          <div className="intro-copy">
+            <div className="section-label">/ 01 — O nosso olhar</div>
+            <h2>Atuação ética que une <span>propósito e eficiência.</span></h2>
+            <p>
+              A Inova apoia órgãos e gestores públicos no aperfeiçoamento da
+              governança, transformando desafios burocráticos em entregas
+              concretas para a população.
+            </p>
+          </div>
+          <div className="intro-visual" role="img" aria-label="Equipe reunida em uma sessão de planejamento e tomada de decisão" />
         </div>
         <div className="stat-row">
-          <div><strong>Missão</strong><span>governança que entrega</span></div>
-          <div><strong>Visão</strong><span>inovação aplicada ao público</span></div>
-          <div><strong>Valores</strong><span>rigor, integridade e impacto</span></div>
+          <div className="stat-item"><span className="stat-icon" aria-hidden="true">◎</span><strong>Missão</strong><span>governança que entrega</span></div>
+          <div className="stat-item"><span className="stat-icon" aria-hidden="true">◌</span><strong>Visão</strong><span>inovação aplicada ao público</span></div>
+          <div className="stat-item"><span className="stat-icon" aria-hidden="true">✦</span><strong>Valores</strong><span>rigor, integridade e impacto</span></div>
         </div>
       </section>
 
@@ -108,27 +132,45 @@ export default function Home() {
           <div className="section-label">/ 02 — Como atuamos</div>
           <h2>Três frentes<br /><span>para transformar.</span></h2>
         </div>
-        <div className="capability-list">
-          {servicePillars.map((pillar) => (
-            <article className="capability" key={pillar.number}>
-              <span className="capability-number">{pillar.number}</span>
-              <div><h3>{pillar.title}</h3><p>{pillar.text}</p><ul>{pillar.services.map((service) => <li key={service}>{service}</li>)}</ul></div>
-              <span className="capability-arrow" aria-hidden="true">↗</span>
-            </article>
-          ))}
+        <div className="capability-story">
+          <div key={selectedPillar.number} className="capability-visual" style={{ backgroundImage: `linear-gradient(145deg, rgba(17,18,20,.08), rgba(17,18,20,.7)), url(${selectedPillar.image})` }}>
+            <div className="capability-visual-caption">
+              <span>{selectedPillar.number} / 03</span>
+              <strong>{selectedPillar.title}</strong>
+            </div>
+          </div>
+          <div className="capability-list">
+            {servicePillars.map((pillar, index) => (
+              <article className={`capability${activePillar === index ? " capability-active" : ""}`} data-index={index} key={pillar.number}>
+                <button className="capability-trigger" type="button" onClick={() => setActivePillar(index)} aria-pressed={activePillar === index}>
+                  <span className="capability-number">{pillar.number}</span>
+                  <h3>{pillar.title}</h3>
+                  <span className="capability-arrow" aria-hidden="true">↗</span>
+                </button>
+                <div className="capability-panel" id={`capability-panel-${pillar.number}`}>
+                  <div className="capability-panel-copy">
+                    <p>{pillar.text}</p>
+                    <ul>{pillar.services.map((service) => <li key={service}>{service}</li>)}</ul>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="contact-section" id="contato">
+        <div className="contact-index">03 — CONTATO</div>
         <div className="contact-tag">Vamos conversar?</div>
         <h2>O próximo avanço<br /><span>começa agora.</span></h2>
+        <p className="contact-description">Conte-nos o desafio. Pensamos juntos no próximo avanço.</p>
         <a className="contact-link" href={`mailto:${contactInfo.email}`}>
           {contactInfo.email} <span>↗</span>
         </a>
       </section>
 
       <footer className="site-footer">
-        <span className="footer-logo">INOVA</span>
+        <span className="footer-logo">INOVA <small>Inteligência em Gestão Pública</small></span>
         <span>Inteligência em Gestão Pública</span>
         <span>© 2026 Inova</span>
       </footer>
