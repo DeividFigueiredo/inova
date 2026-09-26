@@ -2,8 +2,8 @@
 
 :root {
   --ink: #111214;
-  --blue: #8f979f;
-  --lime: #d9dde1;
+  --accent: #8f979f;
+  --soft: #d9dde1;
   --paper: #f5f6f7;
   --muted: #687078;
   --line: #d5d8dc;
@@ -83,7 +83,7 @@ a {
 .header-cta span,
 .button span,
 .contact-link span {
-  color: var(--lime);
+  color: var(--soft);
   margin-left: 12px;
   font-size: 15px;
 }
@@ -124,14 +124,14 @@ a {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: var(--lime);
+  color: var(--soft);
   margin-bottom: 32px;
 }
 .eyebrow span {
   display: inline-block;
   width: 24px;
   height: 1px;
-  background: var(--lime);
+  background: var(--soft);
 }
 .hero h1 {
   font-size: clamp(52px, 7.2vw, 106px);
@@ -141,7 +141,7 @@ a {
   font-weight: 800;
 }
 .hero h1 em {
-  color: var(--lime);
+  color: var(--soft);
   font-style: normal;
 }
 .hero-description {
@@ -164,7 +164,7 @@ a {
   border-radius: 8px;
 }
 .button-primary {
-  background: var(--lime);
+  background: var(--soft);
   color: var(--ink);
 }
 .button-primary span {
@@ -178,49 +178,8 @@ a {
   padding-bottom: 6px;
 }
 .text-link span {
-  color: var(--lime);
+  color: var(--soft);
   margin-left: 8px;
-}
-.hero-aside {
-  position: absolute;
-  right: 11vw;
-  bottom: 86px;
-  width: 145px;
-  color: #c8cdd2;
-  font-size: 13px;
-  line-height: 1.4;
-}
-.aside-rule {
-  width: 100%;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.45);
-  margin-bottom: 17px;
-}
-.hero-aside p {
-  margin: 0 0 40px;
-}
-.hero-aside strong {
-  color: var(--lime);
-  font-weight: 500;
-}
-.aside-index {
-  font-family: "DM Mono", monospace;
-  font-size: 10px;
-}
-.hero-stamp {
-  position: absolute;
-  right: 6vw;
-  top: 88px;
-  color: rgba(255, 255, 255, 0.15);
-  font-size: 64px;
-  line-height: 0.8;
-  letter-spacing: -0.08em;
-  font-weight: 800;
-  transform: rotate(90deg);
-}
-.hero-stamp span {
-  font-size: 26px;
-  letter-spacing: 0.1em;
 }
 .institutional-section {
   display: grid;
@@ -233,7 +192,7 @@ a {
   min-height: 420px;
   background:
     linear-gradient(145deg, rgba(13, 17, 20, 0.18), rgba(13, 17, 20, 0.72)),
-    url("https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1300&q=85");
+    url("/fotos/congresso.webp");
   background-size: cover;
   background-position: center;
   filter: grayscale(1);
@@ -253,7 +212,7 @@ a {
   bottom: 34px;
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: flex-end;
   color: white;
   font-family: "DM Mono", monospace;
   font-size: 10px;
@@ -359,7 +318,7 @@ a {
 .intro-content h2 span,
 .section-heading h2 span,
 .contact-section h2 span {
-  color: var(--blue);
+  color: var(--accent);
 }
 .intro-content > p {
   max-width: 510px;
@@ -367,26 +326,6 @@ a {
   line-height: 1.7;
   font-size: 14px;
   margin: 30px 0 0;
-}
-.stat-row {
-  grid-column: 2;
-  display: flex;
-  gap: 10%;
-  padding-top: 45px;
-  border-top: 1px solid var(--line);
-  margin-top: 45px;
-}
-.stat-row div {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-.stat-row strong {
-  font-size: 16px;
-}
-.stat-row span {
-  color: var(--muted);
-  font-size: 11px;
 }
 .principles-section {
   padding: 34px 11vw 38px;
@@ -410,7 +349,7 @@ a {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: var(--blue);
+  background: var(--accent);
   color: white;
   font-family: "DM Mono", monospace;
   font-size: 14px;
@@ -510,7 +449,7 @@ a {
   cursor: pointer;
 }
 .capability-number {
-  color: var(--blue);
+  color: var(--accent);
   font-family: "DM Mono", monospace;
   font-size: 11px;
 }
@@ -528,7 +467,7 @@ a {
 }
 .capability-arrow {
   font-size: 22px;
-  color: var(--blue);
+  color: var(--accent);
   transition: transform 0.5s ease;
 }
 .capability-active .capability-arrow {
@@ -561,11 +500,11 @@ a {
 }
 .capability-panel li::before {
   content: "↳";
-  color: var(--blue);
+  color: var(--accent);
   margin-right: 6px;
 }
 .contact-section {
-  background: var(--lime);
+  background: var(--soft);
   min-height: 430px;
   padding: 90px 11vw 80px;
 }
@@ -579,7 +518,7 @@ a {
   margin: 45px 0;
 }
 .contact-section h2 span {
-  color: var(--blue);
+  color: var(--accent);
 }
 .contact-link {
   display: inline-flex;
@@ -590,7 +529,7 @@ a {
   padding-bottom: 8px;
 }
 .contact-link span {
-  color: var(--blue);
+  color: var(--accent);
 }
 .site-footer {
   min-height: 88px;
@@ -620,16 +559,6 @@ a {
   to {
     opacity: 1;
     transform: scale(1);
-  }
-}
-@keyframes capability-reveal {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 @media (max-width: 700px) {
@@ -666,16 +595,6 @@ a {
     flex-direction: column;
     gap: 22px;
   }
-  .hero-aside {
-    right: 25px;
-    bottom: 36px;
-    width: 115px;
-  }
-  .hero-stamp {
-    right: -22px;
-    top: 90px;
-    font-size: 40px;
-  }
   .intro-section,
   .capabilities-section {
     padding: 75px 25px;
@@ -687,15 +606,6 @@ a {
   .intro-content h2 {
     margin-top: 45px;
     font-size: 42px;
-  }
-  .stat-row {
-    margin-top: 45px;
-    padding-top: 30px;
-    gap: 22px;
-    flex-wrap: wrap;
-  }
-  .stat-row strong {
-    font-size: 14px;
   }
   .section-heading {
     position: relative;
@@ -818,7 +728,7 @@ a {
       rgba(43, 46, 50, 0.78) 48%,
       rgba(43, 46, 50, 0.58) 100%
     ),
-    url("https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=2200&q=85");
+    url("/fotos/sao-paulo.webp");
   background-size: cover;
   background-position: center;
   filter: grayscale(1);
@@ -826,9 +736,6 @@ a {
 }
 .hero-grid {
   z-index: 0;
-}
-.hero-stamp {
-  top: 22%;
 }
 .site-header {
   position: fixed;
@@ -903,9 +810,6 @@ a {
   .site-header-scrolled .brand-mark {
     transform: scale(0.75);
   }
-  .hero-stamp {
-    top: 112px;
-  }
 }
 
 .capabilities-section {
@@ -963,47 +867,6 @@ a {
 }
 
 .capability-story {
-  height: min(560px, calc(100svh - 330px));
-  min-height: 430px;
-}
-.capability-story .capability-visual {
-  height: 100%;
-  min-height: 0;
-}
-.capability-story .capability-list {
-  height: 100%;
-  overflow-y: auto;
-  scrollbar-width: none;
-  overscroll-behavior: contain;
-  scroll-snap-type: y mandatory;
-}
-.capability-story .capability-list::-webkit-scrollbar {
-  display: none;
-}
-.capability-story .capability {
-  min-height: 100%;
-  scroll-snap-align: start;
-}
-
-@media (max-width: 700px) {
-  .capability-story {
-    height: auto;
-    min-height: 0;
-  }
-  .capability-story .capability-visual {
-    height: 300px;
-  }
-  .capability-story .capability-list {
-    height: auto;
-    overflow: visible;
-    scroll-snap-type: none;
-  }
-  .capability-story .capability {
-    min-height: 0;
-  }
-}
-
-.capability-story {
   height: auto;
   min-height: 0;
 }
@@ -1020,7 +883,7 @@ a {
   scroll-snap-type: none;
 }
 .capability-story .capability {
-  min-height: 64vh;
+  min-height: 44vh;
 }
 
 @media (max-width: 700px) {
@@ -1115,10 +978,6 @@ a {
   width: 100%;
   min-width: 0;
 }
-.intro-section > .stat-row {
-  grid-column: 2;
-  width: 100%;
-}
 .intro-copy {
   min-width: 0;
 }
@@ -1135,16 +994,11 @@ a {
   .intro-section {
     display: block;
   }
-  .intro-section > .intro-content,
-  .intro-section > .stat-row {
+  .intro-section > .intro-content {
     width: 100%;
   }
   .intro-section {
     padding: 75px 25px;
-  }
-  .intro-section > .stat-row {
-    grid-template-columns: 1fr;
-    gap: 24px;
   }
 }
 
@@ -1155,45 +1009,6 @@ a {
 }
 .intro-section > .intro-content {
   width: 100%;
-}
-.intro-section > .stat-row {
-  width: 68%;
-  margin-left: 0;
-}
-.intro-section > .stat-row {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(28px, 7vw, 110px);
-}
-.stat-item {
-  display: grid !important;
-  grid-template-columns: 32px 1fr;
-  grid-template-rows: auto auto;
-  column-gap: 14px;
-  align-items: center;
-}
-.stat-item .stat-icon {
-  grid-row: 1 / span 2;
-  display: grid;
-  place-items: center;
-  width: 30px;
-  height: 30px;
-  border: 1px solid var(--blue);
-  border-radius: 50%;
-  color: #69737b;
-  font-size: 16px;
-}
-.stat-item strong,
-.stat-item > span:last-child {
-  grid-column: 2;
-}
-.stat-item strong {
-  font-size: 16px;
-}
-.stat-item > span:last-child {
-  color: var(--muted);
-  font-size: 11px;
 }
 
 .contact-section {
@@ -1242,4 +1057,100 @@ a {
     margin: -12px 0 28px;
     font-size: 13px;
   }
+}
+
+/* Menu no celular */
+.menu-toggle {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .menu-toggle {
+    display: grid;
+    gap: 6px;
+    width: 40px;
+    height: 40px;
+    place-content: center;
+    margin-left: auto;
+    margin-right: 12px;
+    border: 1px solid currentColor;
+    border-radius: 8px;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+  }
+  .menu-toggle span {
+    display: block;
+    width: 16px;
+    height: 1.5px;
+    background: currentColor;
+    transition: transform 0.2s ease;
+  }
+  .site-header-open .menu-toggle span:first-child {
+    transform: translateY(3.75px) rotate(45deg);
+  }
+  .site-header-open .menu-toggle span:last-child {
+    transform: translateY(-3.75px) rotate(-45deg);
+  }
+  .site-header-open .main-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 8px 22px 18px;
+    background: #f5f6f7;
+    border-bottom: 1px solid var(--line);
+    font-size: 15px;
+  }
+  .site-header-open .main-nav a {
+    padding: 14px 0;
+    color: #30343a;
+    border-bottom: 1px solid var(--line);
+  }
+  .site-header-open .main-nav a:last-child {
+    border-bottom: 0;
+  }
+  .site-header-open:not(.site-header-scrolled) {
+    background: #f5f6f7;
+    color: var(--ink);
+  }
+  .site-header-open:not(.site-header-scrolled) .brand-name {
+    color: #aeb4bb;
+  }
+  .site-header-open:not(.site-header-scrolled) .brand-tagline {
+    color: #30343a;
+  }
+  .site-header-open:not(.site-header-scrolled) .header-cta {
+    background: #25282c;
+  }
+}
+
+.contact-meta {
+  margin: 22px 0 0;
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: #5e666e;
+}
+
+.site-footer {
+  flex-wrap: wrap;
+  row-gap: 10px;
+  padding-top: 22px;
+  padding-bottom: 22px;
+}
+.photo-credits {
+  width: 100%;
+  margin: 0;
+  color: #6f7682;
+  font-size: 8px;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+.photo-credits a {
+  text-decoration: underline;
 }
