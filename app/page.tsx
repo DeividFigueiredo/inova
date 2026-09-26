@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { brandPrinciples, contactInfo, servicePillars } from "./site-data";
+import { brandPrinciples, contactInfo, photoCredits, servicePillars } from "./site-data";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activePillar, setActivePillar] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 48);
@@ -35,20 +36,31 @@ export default function Home() {
 
     capabilityItems.forEach((item) => observer.observe(item));
     return () => observer.disconnect();
-  }, [activePillar]);
+  }, []);
 
   const selectedPillar = servicePillars[activePillar];
 
   return (
     <main>
-      <header className={`site-header${isScrolled ? " site-header-scrolled" : ""}`}>
+      <header className={`site-header${isScrolled ? " site-header-scrolled" : ""}${menuOpen ? " site-header-open" : ""}`}>
         <a className="brand" href="#top" aria-label="Inova - início">
           <span className="brand-mark">
             <span className="brand-name">INOVA</span>
             <span className="brand-tagline">Inteligência em Gestão Pública</span>
           </span>
         </a>
-        <nav className="main-nav" aria-label="Navegação principal">
+        <button
+          className="menu-toggle"
+          type="button"
+          aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={menuOpen}
+          aria-controls="main-nav"
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <span />
+          <span />
+        </button>
+        <nav className="main-nav" id="main-nav" aria-label="Navegação principal" onClick={() => setMenuOpen(false)}>
           <a href="#atuacao">Atuação</a>
           <a href="#sobre">A Inova</a>
           <a href="#contato">Contato</a>
@@ -68,12 +80,10 @@ export default function Home() {
             públicos em decisões mais claras, eficientes e conectadas às pessoas.
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href="#contato">Conheça nosso trabalho <span>↗</span></a>
-            <a className="text-link" href="#atuacao">Ver áreas de atuação <span>↓</span></a>
+            <a className="button button-primary" href="#atuacao">Conheça nosso trabalho <span>↓</span></a>
+            <a className="text-link" href="#contato">Fale com a gente <span>↗</span></a>
           </div>
         </div>
-       
-        
       </section>
 
       <section className="institutional-section" aria-label="Sobre a Inova">
@@ -84,7 +94,7 @@ export default function Home() {
           </div>
         </div>
         <div className="institutional-copy">
-          <p className="section-label">/ 00 — A Inova</p>
+          <p className="section-label">/ 01 — A Inova</p>
           <div className="institutional-title">INOVA <small>Inteligência em Gestão Pública</small></div>
           <p>
             Inteligência aplicada para fazer a gestão pública avançar com
@@ -104,7 +114,7 @@ export default function Home() {
       <section className="intro-section" id="sobre">
         <div className="intro-content">
           <div className="intro-copy">
-            <div className="section-label">/ 01 — O nosso olhar</div>
+            <div className="section-label">/ 02 — O nosso olhar</div>
             <h2>Atuação ética que une <span>propósito e eficiência.</span></h2>
             <p>
               A Inova apoia órgãos e gestores públicos no aperfeiçoamento da
@@ -113,11 +123,6 @@ export default function Home() {
             </p>
           </div>
           <div className="intro-visual" role="img" aria-label="Equipe reunida em uma sessão de planejamento e tomada de decisão" />
-        </div>
-        <div className="stat-row">
-          <div className="stat-item"><span className="stat-icon" aria-hidden="true">◎</span><strong>Missão</strong><span>governança que entrega</span></div>
-          <div className="stat-item"><span className="stat-icon" aria-hidden="true">◌</span><strong>Visão</strong><span>inovação aplicada ao público</span></div>
-          <div className="stat-item"><span className="stat-icon" aria-hidden="true">✦</span><strong>Valores</strong><span>rigor, integridade e impacto</span></div>
         </div>
       </section>
 
@@ -129,7 +134,7 @@ export default function Home() {
 
       <section className="capabilities-section" id="atuacao">
         <div className="section-heading">
-          <div className="section-label">/ 02 — Como atuamos</div>
+          <div className="section-label">/ 03 — Como atuamos</div>
           <h2>Três frentes<br /><span>para transformar.</span></h2>
         </div>
         <div className="capability-story">
@@ -160,19 +165,29 @@ export default function Home() {
       </section>
 
       <section className="contact-section" id="contato">
-        <div className="contact-index">03 — CONTATO</div>
+        <div className="contact-index">/ 04 — Contato</div>
         <div className="contact-tag">Vamos conversar?</div>
         <h2>O próximo avanço<br /><span>começa agora.</span></h2>
         <p className="contact-description">Conte-nos o desafio. Pensamos juntos no próximo avanço.</p>
         <a className="contact-link" href={`mailto:${contactInfo.email}`}>
           {contactInfo.email} <span>↗</span>
         </a>
+        <p className="contact-meta">CNPJ {contactInfo.cnpj}</p>
       </section>
 
       <footer className="site-footer">
         <span className="footer-logo">INOVA <small>Inteligência em Gestão Pública</small></span>
-        <span>Inteligência em Gestão Pública</span>
+        <span>CNPJ {contactInfo.cnpj}</span>
         <span>© 2026 Inova</span>
+        <p className="photo-credits">
+          Fotos:{" "}
+          {photoCredits.map((credit, index) => (
+            <span key={credit.place}>
+              {index > 0 && " · "}
+              <a href={credit.url} target="_blank" rel="noopener noreferrer">{credit.place}</a>, {credit.author} ({credit.license})
+            </span>
+          ))}
+        </p>
       </footer>
     </main>
   );
