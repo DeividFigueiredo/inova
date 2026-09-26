@@ -5,7 +5,7 @@ export const contactInfo = {
 
 // Fotos do Wikimedia Commons; as de CC BY exigem o crédito que aparece no rodapé.
 export const photoCredits = [
-  { place: "Centro do Rio", author: "Diego Baravelli", license: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Centro_do_Rio_de_Janeiro_by_Diego_Baravelli.jpg" },
+  { place: "Av. Chile, Centro do Rio", author: "Mike Peel", license: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:At_Rio_de_Janeiro_2019_434.jpg" },
   { place: "Congresso Nacional", author: "Agência Senado", license: "CC BY 2.0", url: "https://commons.wikimedia.org/wiki/File:Imagens_de_Bras%C3%ADlia_-_Congresso_Nacional_(50059647053).jpg" },
   { place: "Curitiba", author: "Carlos Ebert", license: "CC BY 2.0", url: "https://commons.wikimedia.org/wiki/File:Curitiba_skyline_(29619249185).jpg" },
   { place: "Banco Central", author: "Senado Federal", license: "CC BY 2.0", url: "https://commons.wikimedia.org/wiki/File:Edif%C3%ADcio_sede_do_Banco_Central_do_Brasil_(16011634694).jpg" },
