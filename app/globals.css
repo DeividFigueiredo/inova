@@ -728,7 +728,7 @@ a {
       rgba(43, 46, 50, 0.78) 48%,
       rgba(43, 46, 50, 0.58) 100%
     ),
-    url("/fotos/sao-paulo.webp");
+    url("/fotos/centro-rio.webp");
   background-size: cover;
   background-position: center;
   filter: grayscale(1);
